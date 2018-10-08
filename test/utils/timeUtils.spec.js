@@ -26,4 +26,20 @@ describe("timeUtils", () => {
             expect(timeUtils.hhmmToMinutes(hhmm)).to.equal(100);
         });
     });
+    describe("hhmmIntervalToMinutes", () => {
+        it("should return object", () => {
+            const start = "01:40";
+            const end = "02:40";
+            expect(typeof timeUtils.hhmmIntervalToMinutes(start, end)).to.equal("object");
+        });
+        it("should deep equal", () => {
+            const start = "01:40";
+            const end = "02:40";
+            const expected = {
+                start: 100,
+                end: 160,
+            };
+            expect(timeUtils.hhmmIntervalToMinutes(start, end)).to.deep.equal(expected);
+        });
+    });
 });
