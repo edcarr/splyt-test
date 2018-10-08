@@ -14,10 +14,33 @@ const hhmmToMinutes = (hhmm: string): number => {
     return hhToMinutes(hh) + mmToMinutes(mm);
 };
 
-const hhmmIntervalToMinutes = (start: string, end: string): Interval => {
+const minutesToHh = (minutes: number): string => {
+    const hh = Math.floor(minutes / 60).toString();
+    if (hh.length === 1) {
+        return `0${hh}`;
+    }
+    return hh;
+};
+
+const minutesToMm = (minutes: number): string => {
+    const mm = (minutes % 60).toString();
+    if (mm.length === 1) {
+        return `0${mm}`;
+    }
+    return mm;
+};
+
+const minutesToHhmm = (minutes: number): string => {
+    return `${minutesToHh(minutes)}:${minutesToMm(minutes)}`;
+};
+
+const hhmmStartEndToInterval = (start: string, end: string): Interval => {
+    const startMinutes = hhmmToMinutes(start);
+    const endMinutes = hhmmToMinutes(end);
     return {
-        start: hhmmToMinutes(start),
-        end: hhmmToMinutes(end),
+        start: startMinutes,
+        end: endMinutes,
+        duration: endMinutes - startMinutes,
     };
 };
 
@@ -25,5 +48,8 @@ export default {
     hhToMinutes,
     mmToMinutes,
     hhmmToMinutes,
-    hhmmIntervalToMinutes,
+    minutesToHh,
+    minutesToMm,
+    minutesToHhmm,
+    hhmmStartEndToInterval,
 };

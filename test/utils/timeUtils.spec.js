@@ -26,11 +26,40 @@ describe("timeUtils", () => {
             expect(timeUtils.hhmmToMinutes(hhmm)).to.equal(100);
         });
     });
-    describe("hhmmIntervalToMinutes", () => {
+    describe("minutesToHh", () => {
+        it("should return hh in minutes", () => {
+            const minutes = 840;
+            const expected = "14";
+            expect(timeUtils.minutesToHh(minutes)).to.equal(expected);
+        });
+        it("should be of length 2 always", () => {
+            const minutes = 100;
+            expect(timeUtils.minutesToHh(minutes).length).to.equal(2);
+        });
+    });
+    describe("minutesToMm", () => {
+        it("should return mm in minutes", () => {
+            const minutes = 100;
+            const expected = "40";
+            expect(timeUtils.minutesToMm(minutes)).to.equal(expected);
+        });
+        it("should be of length 2 always", () => {
+            const minutes = 100;
+            expect(timeUtils.minutesToHh(minutes).length).to.equal(2);
+        });
+    });
+    describe("minutesToHhmm", () => {
+        it("should return hours in minutes", () => {
+            const minutes = 100;
+            const expected = "01:40";
+            expect(timeUtils.minutesToHhmm(minutes)).to.equal(expected);
+        });
+    });
+    describe("hhmmStartEndToInterval", () => {
         it("should return object", () => {
             const start = "01:40";
             const end = "02:40";
-            expect(typeof timeUtils.hhmmIntervalToMinutes(start, end)).to.equal("object");
+            expect(typeof timeUtils.hhmmStartEndToInterval(start, end)).to.equal("object");
         });
         it("should deep equal", () => {
             const start = "01:40";
@@ -38,8 +67,9 @@ describe("timeUtils", () => {
             const expected = {
                 start: 100,
                 end: 160,
+                duration: 60,
             };
-            expect(timeUtils.hhmmIntervalToMinutes(start, end)).to.deep.equal(expected);
+            expect(timeUtils.hhmmStartEndToInterval(start, end)).to.deep.equal(expected);
         });
     });
 });
