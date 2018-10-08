@@ -1,20 +1,20 @@
 /* @flow */
 
-const parseHourString = (hh: string): number => {
+const hhToMinutes = (hh: string): number => {
     return parseInt(hh, 10) * 60;
 };
 
-const parseMinuteString = (mm: string): number => {
+const mmToMinutes = (mm: string): number => {
     return parseInt(mm, 10);
 };
 
-const parseHourMinuteStringToInteger = (hhmm: string): number => {
+const hhmmToMinutes = (hhmm: string): number => {
     const [hh, mm] = hhmm.split(":");
-    return parseHourString(hh) + parseMinuteString(mm);
+    return hhToMinutes(hh) + mmToMinutes(mm);
 };
 
 export default {
-    parseHourString,
-    parseMinuteString,
-    parseHourMinuteStringToInteger,
+    hhToMinutes,
+    mmToMinutes,
+    hhmmToMinutes,
 };
