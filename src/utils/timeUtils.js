@@ -35,12 +35,9 @@ const minutesToHhmm = (minutes: number): string => {
 };
 
 const hhmmStartEndToInterval = (start: string, end: string): Interval => {
-    const startMinutes = hhmmToMinutes(start);
-    const endMinutes = hhmmToMinutes(end);
     return {
-        start: startMinutes,
-        end: endMinutes,
-        duration: endMinutes - startMinutes,
+        start: hhmmToMinutes(start),
+        end: hhmmToMinutes(end),
     };
 };
 

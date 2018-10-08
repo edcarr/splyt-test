@@ -34,7 +34,7 @@ describe("timeUtils", () => {
         });
         it("should be of length 2 always", () => {
             const minutes = 100;
-            expect(timeUtils.minutesToHh(minutes).length).to.equal(2);
+            expect(timeUtils.minutesToHh(minutes)).to.have.lengthOf(2);
         });
     });
     describe("minutesToMm", () => {
@@ -45,7 +45,7 @@ describe("timeUtils", () => {
         });
         it("should be of length 2 always", () => {
             const minutes = 100;
-            expect(timeUtils.minutesToHh(minutes).length).to.equal(2);
+            expect(timeUtils.minutesToHh(minutes)).to.have.lengthOf(2);
         });
     });
     describe("minutesToHhmm", () => {
@@ -67,7 +67,6 @@ describe("timeUtils", () => {
             const expected = {
                 start: 100,
                 end: 160,
-                duration: 60,
             };
             expect(timeUtils.hhmmStartEndToInterval(start, end)).to.deep.equal(expected);
         });
