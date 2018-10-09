@@ -1,4 +1,4 @@
-# node-babel-eslint-flow-boilerplate
+# splyt code test
 
 ### Installation
 
