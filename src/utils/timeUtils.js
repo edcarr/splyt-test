@@ -2,11 +2,19 @@
 import type { Interval } from "../types";
 
 const hhToMinutes = (hh: string): number => {
-    return parseInt(hh, 10) * 60;
+    const minutes = parseInt(hh, 10) * 60;
+    if (Number.isNaN(minutes)) {
+        throw new Error(`malformed hh input: ${hh}`);
+    }
+    return minutes;
 };
 
 const mmToMinutes = (mm: string): number => {
-    return parseInt(mm, 10);
+    const minutes = parseInt(mm, 10);
+    if (Number.isNaN(minutes)) {
+        throw new Error(`malformed mm input: ${mm}`);
+    }
+    return minutes;
 };
 
 const hhmmToMinutes = (hhmm: string): number => {
@@ -15,6 +23,9 @@ const hhmmToMinutes = (hhmm: string): number => {
 };
 
 const minutesToHh = (minutes: number): string => {
+    if (typeof minutes !== "number") {
+        throw new Error(`malformed minutes input: ${minutes}`);
+    }
     const hh = Math.floor(minutes / 60).toString();
     if (hh.length === 1) {
         return `0${hh}`;
@@ -23,6 +34,9 @@ const minutesToHh = (minutes: number): string => {
 };
 
 const minutesToMm = (minutes: number): string => {
+    if (typeof minutes !== "number") {
+        throw new Error(`malformed minutes input: ${minutes}`);
+    }
     const mm = (minutes % 60).toString();
     if (mm.length === 1) {
         return `0${mm}`;
