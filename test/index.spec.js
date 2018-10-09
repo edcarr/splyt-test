@@ -300,5 +300,14 @@ describe("index", () => {
             expect(result).to.have.lengthOf(5);
             expect(result).to.match(/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/);
         });
+        it("should return '12:15'", () => {
+            const duration = 60;
+            const schedules = DEFAULT_SCHEDULES;
+            const result = appointments.getFirstSharedAvailableStartTimeForAllSchedules(
+                schedules,
+                duration
+            );
+            expect(result).to.equal("12:15");
+        });
     });
 });
